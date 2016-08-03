@@ -56,7 +56,11 @@ num.partitions=1
 # from the end of the log.
 
 # The minimum age of a log file to be eligible for deletion
-log.retention.hours=168
+log.retention.hours={{LOG_RETENTION_HOURS}}
+
+
+log.cleaner.enabled={{LOG_CLEANER_ENABLED}}
+log.cleanup.policy={{LOG_CLEANUP_POLICY}}
 
 ############################# Zookeeper #############################
 
