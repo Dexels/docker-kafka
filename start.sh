@@ -22,14 +22,11 @@ cat /kafka/config/server.properties.template | sed \
   -e "s|{{ZOOKEEPER_CONNECTION_TIMEOUT_MS}}|${ZOOKEEPER_CONNECTION_TIMEOUT_MS:-10000}|g" \
   -e "s|{{ZOOKEEPER_SESSION_TIMEOUT_MS}}|${ZOOKEEPER_SESSION_TIMEOUT_MS:-10000}|g" \
   -e "s|{{GROUP_MAX_SESSION_TIMEOUT_MS}}|${GROUP_MAX_SESSION_TIMEOUT_MS:-300000}|g" \
-  -e "s|{{LOG_RETENTION_HOURS}}|${LOG_RETENTION_HOURS:168|g" \
-  -e "s|{{LOG_CLEANER_ENABLED}}|${LOG_CLEANER_ENABLED:false|g" \
-  -e "s|{{LOG_CLEANUP_POLICY}}|${LOG_CLEANUP_POLICY:delete|g" \
-
-
-
-
-
+  -e "s|{{LOG_RETENTION_HOURS}}|${LOG_RETENTION_HOURS:-168}|g" \
+  -e "s|{{LOG_CLEANER_ENABLED}}|${LOG_CLEANER_ENABLED:-false}|g" \
+  -e "s|{{LOG_CLEANUP_POLICY}}|${LOG_CLEANUP_POLICY:-delete}|g" \
+  -e "s|{{DEFAULT_REPLICATION_FACTOR}}|${DEFAULT_REPLICATION_FACTOR:-2}|g" \
+  -e "s|{{DEFAULT_NUM_PARTITIONS}}|${DEFAULT_NUM_PARTITIONS:-5}|g" \
    > /kafka/config/server.properties
 
 # Kafka's built-in start scripts set the first three system properties here, but

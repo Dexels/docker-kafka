@@ -39,7 +39,7 @@ ADD start.sh /start.sh
 
 # Set up a user to run Kafka
 RUN groupadd kafka && \
-  useradd -d /kafka -g kafka -s /bin/false kafka && \
+  useradd -d /kafka -g kafka -s /bin/false -u 2499 kafka && \
   chown -R kafka:kafka /kafka /data /logs
 USER kafka
 ENV PATH /kafka/bin:$PATH
