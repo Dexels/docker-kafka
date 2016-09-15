@@ -51,5 +51,8 @@ if [ -z $KAFKA_JMX_OPTS ]; then
     export KAFKA_JMX_OPTS
 fi
 
-echo "Starting kafka"
+echo "Starting kafka with JMX OPTS: ${KAFKA_JMX_OPTS}"
+# Capture kill requests to stop properly
+trap "/kafka/bin/kafka-server-stop.sh; echo 'Kafka stopped.'; exit" SIGHUP SIGINT SIGTERM
+
 exec /kafka/bin/kafka-server-start.sh /kafka/config/server.properties
