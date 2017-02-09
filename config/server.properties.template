@@ -58,8 +58,8 @@ num.partitions={{DEFAULT_NUM_PARTITIONS}}
 # The minimum age of a log file to be eligible for deletion
 log.retention.hours={{LOG_RETENTION_HOURS}}
 
-
-log.cleaner.enabled={{LOG_CLEANER_ENABLED}}
+log.segment.bytes={{LOG_SEGMENT_BYTES}}
+log.cleaner.enable={{LOG_CLEANER_ENABLED}}
 log.cleanup.policy={{LOG_CLEANUP_POLICY}}
 
 ############################# Zookeeper #############################
@@ -76,5 +76,5 @@ zookeeper.session.timeout.ms={{ZOOKEEPER_SESSION_TIMEOUT_MS}}
 ############################# Additional Broker Settings #######################
 controlled.shutdown.enable=true
 group.max.session.timeout.ms={{GROUP_MAX_SESSION_TIMEOUT_MS}}
-
+message.max.bytes={{MESSAGE_MAX_BYTES}}
 # vim:set filetype=jproperties

@@ -10,9 +10,9 @@ FROM netflixoss/java:8
 MAINTAINER Ches Martin <ches@whiskeyandgrits.net>
 
 # The Scala 2.11 build is currently recommended by the project.
-ENV KAFKA_VERSION=0.10.0.1 KAFKA_SCALA_VERSION=2.11 JMX_PORT=7203
+ENV KAFKA_VERSION=0.10.1.0 KAFKA_SCALA_VERSION=2.11 JMX_PORT=7203
 ENV KAFKA_RELEASE_ARCHIVE kafka_${KAFKA_SCALA_VERSION}-${KAFKA_VERSION}.tgz
-
+#ENV KAFKA_RELEASE_ARCHIVE kafka_2.11-0.10.1.0-SNAPSHOT.tgz
 RUN mkdir /kafka /data /logs
 
 RUN apt-get update && \
@@ -22,6 +22,7 @@ RUN apt-get update && \
 # Download Kafka binary distribution
 ADD http://www.us.apache.org/dist/kafka/${KAFKA_VERSION}/${KAFKA_RELEASE_ARCHIVE} /tmp/
 ADD https://dist.apache.org/repos/dist/release/kafka/${KAFKA_VERSION}/${KAFKA_RELEASE_ARCHIVE}.md5 /tmp/
+#COPY kafka_2.11-0.10.1.0-SNAPSHOT.tgz /tmp
 
 WORKDIR /tmp
 

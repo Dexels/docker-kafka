@@ -25,8 +25,10 @@ cat /kafka/config/server.properties.template | sed \
   -e "s|{{LOG_RETENTION_HOURS}}|${LOG_RETENTION_HOURS:-168}|g" \
   -e "s|{{LOG_CLEANER_ENABLED}}|${LOG_CLEANER_ENABLED:-false}|g" \
   -e "s|{{LOG_CLEANUP_POLICY}}|${LOG_CLEANUP_POLICY:-delete}|g" \
+  -e "s|{{LOG_SEGMENT_BYTES}}|${LOG_SEGMENT_BYTES:-10485760}|g" \
   -e "s|{{DEFAULT_REPLICATION_FACTOR}}|${DEFAULT_REPLICATION_FACTOR:-2}|g" \
   -e "s|{{DEFAULT_NUM_PARTITIONS}}|${DEFAULT_NUM_PARTITIONS:-5}|g" \
+  -e "s|{{MESSAGE_MAX_BYTES}}|${MESSAGE_MAX_BYTES:-2000000}|g" \
    > /kafka/config/server.properties
 
 # Kafka's built-in start scripts set the first three system properties here, but
@@ -53,6 +55,6 @@ fi
 
 echo "Starting kafka with JMX OPTS: ${KAFKA_JMX_OPTS}"
 # Capture kill requests to stop properly
-trap "/kafka/bin/kafka-server-stop.sh; echo 'Kafka stopped.'; exit" SIGHUP SIGINT SIGTERM
+trap "echo "Signal detected, stopping kafka."; /kafka/bin/kafka-server-stop.sh; echo 'Kafka stopped.'; exit" SIGHUP SIGINT SIGTERM
 
 exec /kafka/bin/kafka-server-start.sh /kafka/config/server.properties
