@@ -62,6 +62,8 @@ log.segment.bytes={{LOG_SEGMENT_BYTES}}
 log.cleaner.enable={{LOG_CLEANER_ENABLED}}
 log.cleanup.policy={{LOG_CLEANUP_POLICY}}
 
+offsets.retention.minutes={{OFFSETS_RETENTION_MINUTES}}
+
 ############################# Zookeeper #############################
 
 # Zk connection string (see zk docs for details).
