@@ -61,7 +61,7 @@ log.retention.hours={{LOG_RETENTION_HOURS}}
 log.segment.bytes={{LOG_SEGMENT_BYTES}}
 log.cleaner.enable={{LOG_CLEANER_ENABLED}}
 log.cleanup.policy={{LOG_CLEANUP_POLICY}}
-
+log.cleaner.min.compaction.lag.ms={{LOG_CLEANER_MIN_COMPACTION_MS}}
 offsets.retention.minutes={{OFFSETS_RETENTION_MINUTES}}
 
 ############################# Zookeeper #############################
