@@ -63,7 +63,7 @@ log.cleaner.enable={{LOG_CLEANER_ENABLED}}
 log.cleanup.policy={{LOG_CLEANUP_POLICY}}
 log.cleaner.min.compaction.lag.ms={{LOG_CLEANER_MIN_COMPACTION_MS}}
 offsets.retention.minutes={{OFFSETS_RETENTION_MINUTES}}
-
+log.message.timestamp.type={{LOG_MESSAGE_TIMESTAMP_TYPE}}
 ############################# Zookeeper #############################
 
 # Zk connection string (see zk docs for details).

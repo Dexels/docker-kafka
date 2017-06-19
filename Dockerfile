@@ -8,12 +8,12 @@
 
 FROM dexels/java:8
 MAINTAINER Ches Martin <ches@whiskeyandgrits.net>
-
+#kafka_2.12-0.10.2.1.tgz
 # The Scala 2.11 build is currently recommended by the project.
-ENV KAFKA_VERSION=0.10.2.1 KAFKA_SCALA_VERSION=2.11 JMX_PORT=7203
-ENV KAFKA_RELEASE_ARCHIVE kafka_${KAFKA_SCALA_VERSION}-${KAFKA_VERSION}.tgz
-#ENV KAFKA_RELEASE_ARCHIVE kafka_2.11-0.10.1.0-SNAPSHOT.tgz
-#ENV KAFKA_RELEASE_ARCHIVE kafka_2.11-0.11.0.0-SNAPSHOT.tgz
+ENV KAFKA_VERSION=0.10.2.1 KAFKA_SCALA_VERSION=2.12 JMX_PORT=7203
+#ENV KAFKA_RELEASE_ARCHIVE kafka_${KAFKA_SCALA_VERSION}-${KAFKA_VERSION}.tgz
+#ENV KAFKA_RELEASE_ARCHIVE kafka_2.12-0.10.2.1.tgz
+ENV KAFKA_RELEASE_ARCHIVE kafka_2.12-0.11.1.0-SNAPSHOT.tgz
 RUN mkdir /kafka /data /logs
 
 RUN apt-get update && \
@@ -21,11 +21,11 @@ RUN apt-get update && \
     ca-certificates
 
 # Download Kafka binary distribution
-ADD http://www.us.apache.org/dist/kafka/${KAFKA_VERSION}/${KAFKA_RELEASE_ARCHIVE} /tmp/
+#ADD http://www.us.apache.org/dist/kafka/${KAFKA_VERSION}/${KAFKA_RELEASE_ARCHIVE} /tmp/
 #ADD https://dist.apache.org/repos/dist/release/kafka/${KAFKA_VERSION}/${KAFKA_RELEASE_ARCHIVE}.md5 /tmp/
 #COPY kafka_2.10-0.11.0.0-SNAPSHOT.tgz /tmp
 #COPY kafka_2.11-0.11.0.0-SNAPSHOT.tgz /tmp
-
+COPY ${KAFKA_RELEASE_ARCHIVE} /tmp
 WORKDIR /tmp
 
 # Check artifact digest integrity
